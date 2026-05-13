@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Customer Service | Buku Agen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #003087;
+            --primary-light: #0046c7;
+            --accent: #25D366;
+            --verify-blue: #0095f6;
+            --text-main: #1F2937;
+            --bg-body: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.05) 1px, transparent 0);
+            background-size: 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 15px; /* Memberi ruang lebih di luar kartu */
+        }
+
+        .card {
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            border-radius: 35px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 45px 20px 35px; /* Menambah tinggi header (Padding Atas/Bawah) */
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .logo-box {
+            width: 110px; 
+            height: 110px; 
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-box:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .brand {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .verify-badge {
+            color: var(--verify-blue);
+            display: flex;
+            align-items: center;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 5px;
+        }
+
+        .dot-container {
+            position: relative;
+            width: 9px;
+            height: 9px;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .dot-pulse {
+            width: 9px;
+            height: 9px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.5); opacity: 1; }
+            80%, 100% { transform: scale(2.8); opacity: 0; }
+        }
+
+        .content {
+            padding: 35px 25px 40px; /* Menambah tinggi konten bawah (Padding Atas/Bawah) */
+            flex: 1;
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .help-item {
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+            padding: 18px 5px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .help-item:hover {
+            background: #ffffff;
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+        }
+
+        .help-item .icon-box {
+            width: 42px;
+            height: 42px;
+            background: #edf2f7;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            color: var(--primary);
+            transition: 0.3s;
+        }
+
+        .help-item:hover .icon-box {
+            background: var(--primary);
+            color: white;
+        }
+
+        .help-item span {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.3;
+            display: block;
+        }
+
+        .btn-wa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 24px;
+            font-weight: 800;
+            font-size: 17px;
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .btn-wa:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-wa::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(45deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .footer {
+            padding: 25px 20px;
+            text-align: center;
+            background: #fcfdfe;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .footer-tag {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 800;
+            color: #475569;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .copyright {
+            font-size: 11px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        <div class="logo-box">
+            <img src="https://images2.imgbox.com/17/52/Y4UKBoW7_o.jpg" alt="Logo Buku Agen">
+        </div>
+        
+        <div class="brand-container">
+            <div class="brand">Buku Agen</div>
+            <div class="verify-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M10.5213 2.62368C11.3147 1.75255 12.6853 1.75255 13.4787 2.62368L14.4821 3.72533C14.8266 4.10359 15.324 4.30718 15.8447 4.28274L17.3597 4.21178C18.5521 4.15594 19.5606 5.16441 19.5048 6.35676L19.4338 7.87183C19.4094 8.39257 19.613 8.89001 19.9913 9.23447L21.0929 10.2379C21.9641 11.0313 21.9641 12.4019 21.0929 13.1953L19.9913 14.1987C19.613 14.5431 19.4094 15.0406 19.4338 15.5613L19.5048 17.0764C19.5606 18.2687 18.5521 19.2772 17.3597 19.2214L15.8447 19.1504C15.324 19.126 14.8266 19.3295 14.4821 19.7078L13.4787 20.8094C12.6853 21.6806 11.3147 21.6806 10.5213 20.8094L9.51786 19.7078C9.1734 19.3295 8.67597 19.126 8.15526 19.1504L6.64025 19.2214C5.4479 19.2772 4.43943 18.2687 4.49527 17.0764L4.56623 15.5613C4.59067 15.0406 4.38708 14.5431 4.00882 14.1987L2.90718 13.1953C2.03605 12.4019 2.03605 11.0313 2.90718 10.2379L4.00882 9.23447C4.38708 8.89001 4.59067 8.39257 4.56623 7.87183L4.49527 6.35676C4.43943 5.16441 5.4479 4.15594 6.64025 4.21178L8.15526 4.28274C8.67597 4.30718 9.1734 4.10359 9.51786 3.72533L10.5213 2.62368Z" fill="currentColor"/>
+                    <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="status-pill">
+            <div class="dot-container">
+                <div class="dot"></div>
+                <div class="dot-pulse"></div>
+            </div>
+            AKUN RESMI TERVERIFIKASI
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="help-grid">
+            <a href="https://wa.me/6282154812370?text=Halo%20Buku%20Agen%2C%20mohon%20bantuan." class="help-item">
+                <div class="icon-box"><svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <span>Bantuan<br>24 Jam</span>
+            </a>
+            <a href="https://wa.me/6282154812370?text=Halo%20Buku%20Agen%2C%20saya%20ingin%20buka%20blokir%20akun." class="help-item">
+                <div class="icon-box"><svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg></div>
+                <span>Buka<br>Blokir</span>
+            </a>
+            <a href="https://wa.me/6282154812370?text=Halo%20Buku%20Agen%2C%20bantu%20saya%20pulihkan%20akun." class="help-item">
+                <div class="icon-box"><svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                <span>Pulihkan<br>Akun</span>
+            </a>
+            <a href="https://wa.me/6282154812370?text=Halo%20Buku%20Agen%2C%20saya%20ingin%20cek%20saldo%20dan%20mutasi." class="help-item">
+                <div class="icon-box"><svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg></div>
+                <span>Cek Saldo<br>& Mutasi</span>
+            </a>
+            <a href="https://wa.me/6282154812370?text=Halo%20Buku%20Agen%2C%20bantu%20transaksi%20saya." class="help-item">
+                <div class="icon-box"><svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg></div>
+                <span>Transaksi<br>& Bayar</span>
+            </a>
+            <a href="https://wa.me/6282154812370?text=Halo%20Buku%20Agen%2C%20saya%20butuh%20informasi%20layanan." class="help-item">
+                <div class="icon-box"><svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <span>Info<br>Layanan</span>
+            </a>
+        </div>
+
+        <a href="https://wa.me/6282154812370?text=Halo%20Buku%20Agen%2C%20mohon%20bantuannya." class="btn-wa">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.52.901 3.135 1.376 4.793 1.377 5.176 0 9.387-4.211 9.39-9.39 0-2.512-.977-4.873-2.753-6.65s-4.138-2.752-6.65-2.752c-5.176 0-9.386 4.211-9.39 9.39-.001 1.75.485 3.454 1.407 4.933l-.934 3.414 3.493-.916h-.034zm11.233-6.192c-.297-.148-1.756-.867-2.027-.966-.271-.099-.468-.148-.665.148-.197.297-.764.966-.936 1.164-.172.197-.344.222-.641.074-.297-.148-1.255-.462-2.39-1.474-.883-.788-1.48-1.761-1.653-2.059-.172-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.665-1.608-.912-2.203-.24-.577-.484-.499-.665-.508-.171-.008-.37-.01-.568-.01-.198 0-.52.074-.792.372-.272.297-1.038 1.016-1.038 2.479 0 1.462 1.063 2.875 1.212 3.073.149.198 2.092 3.2 5.067 4.487.708.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+            HUBUNGI WHATSAPP
+        </a>
+    </div>
+
+    <div class="footer">
+        <div class="footer-tag">OFFICIAL SUPPORT</div>
+        <p class="copyright">
+            © 2026 PT Buku Agen Digital.<br>
+            Verified & Secured Official Channel.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
